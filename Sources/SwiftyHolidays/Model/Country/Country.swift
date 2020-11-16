@@ -10,7 +10,7 @@ public enum Country: String, CaseIterable, CountryProtocol {
     case spain
     case switzerland
     case unitedStates
-    
+    case canada
     // MARK: Public
 
     /// SwiftyHolidays: Returns a `Country` if a country with the given ISO code exists and is supported by SwiftyHolidays.
@@ -87,7 +87,8 @@ public enum Country: String, CaseIterable, CountryProtocol {
         .germany: .germany(state: nil),
         .spain: .spain(community: nil),
         .switzerland: .switzerland(canton: nil),
-        .unitedStates: .unitedStates(state: nil)
+        .unitedStates: .unitedStates(state: nil),
+        .canada: .canada(province: nil)
     ]
 }
 
@@ -99,6 +100,7 @@ public enum CountryWithState: CaseIterable, CountryProtocol {
     case spain(community: SpanishCommunity?)
     case switzerland(canton: SwissCanton?)
     case unitedStates(state: USState?)
+    case canada(province: CanadianProvince?)
 
     // MARK: Public
     
@@ -134,6 +136,8 @@ public enum CountryWithState: CaseIterable, CountryProtocol {
             return Switzerland(state: canton)
         case .unitedStates(let state):
             return UnitedStates(state: state)
+        case .canada(let province):
+            return Canada.init(state: province)
         }
     }
 }
