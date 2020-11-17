@@ -248,8 +248,10 @@ final class UnitedStates: CountryWithStateBase<USState> {
         if LocalDate(year: year, month: .december, day: 31)!.weekday == Weekday.friday {
             builder.addHoliday("New Year's Day (observed)", date: (.december, 31))
         }
-
-        return builder.getHolidays()
+        let holidays = builder.getHolidays().sorted { (h1, h2) -> Bool in
+            h1.date.asDate(in: TimeZone.current) < h2.date.asDate(in: TimeZone.current)
+        }
+        return holidays
     }
 
     // https://en.wikipedia.org/wiki/Lee–Jackson–King_Day
