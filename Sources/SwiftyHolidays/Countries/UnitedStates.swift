@@ -38,19 +38,12 @@ final class UnitedStates: CountryWithStateBase<USState> {
         builder.addHoliday(martinLutherKingJrDay(in: year))
         
         builder.addHoliday(groundHogDay(in: year))
-
-        if state?.isIn([.connecticut, .illinois, .indiana, .newJersey, .newYork]) == true || (state == .california &&
-            1971...2009 ~= year) {
-            builder.addHoliday("Lincoln's Birthday", date: (.february, 12), checkObservance: true)
-        }
+        
+        builder.addHoliday("Lincoln's Birthday", date: (.february, 12), checkObservance: true)
         builder.addHoliday(valentinesDay(in: year))
-        
         builder.addHoliday(presidentsDay(in: year))
-        
         builder.addHoliday(washingtonsBirthday(in: year))
-        
         builder.addHoliday(tuple: susanBAnothonyDay(in: year))
-
         builder.addHoliday(washingtonsBirthday(in: year))
         
 
@@ -89,6 +82,7 @@ final class UnitedStates: CountryWithStateBase<USState> {
         }
 
         let easter = LocalDate.easter(in: year)
+        builder.addHoliday(Holiday.init(name: "Easter", date: easter))
 
         if state?.isIn([.connecticut, .delaware, .indiana, .kentucky, .louisiana, .newJersey, .northCarolina,
             .tennessee, .texas]) == true {
@@ -319,30 +313,7 @@ final class UnitedStates: CountryWithStateBase<USState> {
 
     // https://en.wikipedia.org/wiki/Washington%27s_Birthday
     private func washingtonsBirthday(in year: Int) -> Holiday? {
-        guard let state = state else { return nil }
-        var name = "Washington's Birthday"
-        if state.isIn([.hawaii, .newMexico, .northDakota, .oklahoma, .pennsylvania, .southDakota, .texas, .vermont,
-        .washington, .alaska, .idaho, .maryland, .nevada, .newHampshire, .tennessee, .westVirginia, .wyoming, .nevada,
-        .newJersey, .oregon]) {
-            name = "Presidents' Day"
-        } else if state == .alabama {
-            name = "George Washington/Thomas Jefferson Birthday"
-        } else if state == .maine {
-            name = "Washington's Birthday/President's Day"
-        }
-        if state == .georgia {
-            let day = LocalDate(year: year, month: .december, day: 24)!.weekday == Weekday.wednesday ? 26 : 24
-            return Holiday(name: name, date: (year, .december, day))
-        }
-        if !state.isIn([.delaware, .florida, .newMexico]) {
-            if year >= 1971 {
-                return Holiday(name: name, date: Month.february.get(.third, .monday, in: year))
-            }
-            if year >= 1879 {
-                return Holiday(name: name, date: (year, .february, 22))
-            }
-        }
-        return nil
+        return Holiday(name: "Washington's Birthday", date: (year, .february, 22))
     }
 
     // https://en.wikipedia.org/wiki/Cesar_Chavez_Day
