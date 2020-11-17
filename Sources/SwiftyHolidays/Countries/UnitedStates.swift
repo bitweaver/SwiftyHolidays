@@ -451,8 +451,7 @@ final class UnitedStates: CountryWithStateBase<USState> {
     //second sunday in may
     func mothersDay(in year: Int) -> Holiday? {
         let date = Month.may.get(.second, .sunday, in: year)
-        ret = Holiday(name: "Mother's Day", date: date)
-        return ret
+        return Holiday(name: "Mother's Day", date: date)
     }
     
     func flagDay(in year: Int) -> Holiday? {
@@ -473,10 +472,8 @@ final class UnitedStates: CountryWithStateBase<USState> {
     
     //third sunday in june
     func fathersDay(in year: Int) -> Holiday? {
-        var ret: Holiday?
         let date = Month.june.get(.third, .sunday, in: year)
-        ret = Holiday(name: "Father's Day", date: date)
-        return ret
+        return Holiday(name: "Father's Day", date: date)
     }
     
     func columbusDay(in year: Int) -> Holiday? {
