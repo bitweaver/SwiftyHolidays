@@ -42,7 +42,6 @@ final class UnitedStates: CountryWithStateBase<USState> {
         builder.addHoliday("Lincoln's Birthday", date: (.february, 12), checkObservance: true)
         builder.addHoliday(valentinesDay(in: year))
         builder.addHoliday(presidentsDay(in: year))
-        builder.addHoliday(washingtonsBirthday(in: year))
         builder.addHoliday(tuple: susanBAnothonyDay(in: year))
         builder.addHoliday(washingtonsBirthday(in: year))
         
