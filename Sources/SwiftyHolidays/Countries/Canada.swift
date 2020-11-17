@@ -4,7 +4,7 @@ final class Canada: CountryWithStateBase<CanadianProvince> {
     
     override func allHolidays(in year: Int) -> [Holiday] {
         //TODO force unwrap
-        let newYearsDay = Holiday.init(name: "New Years Day", date: LocalDate.init(year: year, month: .january, day: 1)!)
+        let newYearsDay = Holiday.init(name: "New Year's Day", date: LocalDate.init(year: year, month: .january, day: 1)!)
         let heritageDay = getHeritageDay(year: year)
         let goodFriday = getGoodFriday(year: year)
         let easter = Holiday.init(name: "Easter", date: LocalDate.easter(in: year))
