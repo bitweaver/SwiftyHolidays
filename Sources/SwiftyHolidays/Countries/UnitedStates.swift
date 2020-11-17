@@ -36,15 +36,23 @@ final class UnitedStates: CountryWithStateBase<USState> {
         builder.addHoliday(leeJacksonDay(in: year))
 
         builder.addHoliday(martinLutherKingJrDay(in: year))
+        
+        builder.addHoliday(groundHogDay(in: year))
 
         if state?.isIn([.connecticut, .illinois, .indiana, .newJersey, .newYork]) == true || (state == .california &&
             1971...2009 ~= year) {
             builder.addHoliday("Lincoln's Birthday", date: (.february, 12), checkObservance: true)
         }
-
+        builder.addHoliday(valentinesDay(in: year))
+        
+        builder.addHoliday(presidentsDay(in: year))
+        
+        builder.addHoliday(washingtonsBirthday(in: year))
+        
         builder.addHoliday(tuple: susanBAnothonyDay(in: year))
 
         builder.addHoliday(washingtonsBirthday(in: year))
+        
 
         if state == .illinois && year >= 1978 {
             builder.addHoliday("Casimir Pulaski Day", date: Month.march.first(.monday, in: year))
@@ -86,9 +94,25 @@ final class UnitedStates: CountryWithStateBase<USState> {
             .tennessee, .texas]) == true {
             builder.addHoliday("Good Friday", date: easter.addingDays(-2))
         }
+        
+        builder.addHoliday(beginDaylightSavings(in: year))
+        
+        builder.addHoliday(stPatricksDay(in: year))
+        builder.addHoliday(aprilFoolsDay(in: year))
 
         builder.addHoliday(confederateHeroesDay(in: year))
-
+        builder.addHoliday(taxDay(in: year))
+        builder.addHoliday(earthDay(in: year))
+        builder.addHoliday(mothersDay(in: year))
+        builder.addHoliday(flagDay(in: year))
+        builder.addHoliday(juneteenth(in: year))
+        builder.addHoliday(fathersDay(in: year))
+        builder.addHoliday(columbusDay(in: year))
+        builder.addHoliday(indigenousPeopleDay(in: year))
+        builder.addHoliday(halloween(in: year))
+        builder.addHoliday(endDaylightSavings(in: year))
+        builder.addHoliday(electionDay(in: year))
+        
         if state == .texas && year >= 1875 {
             builder.addHoliday("San Jacinto Day", date: (.april, 21))
         }
@@ -110,7 +134,7 @@ final class UnitedStates: CountryWithStateBase<USState> {
         if state == .missouri && year >= 1949 {
             builder.addHoliday("Truman Day", date: (.may, 8), checkObservance: true)
         }
-
+        
         if year >= 1970 {
             builder.addHoliday("Memorial Day", date: Month.may.last(.monday, in: year))
         } else if year >= 1888 {
@@ -396,14 +420,7 @@ final class UnitedStates: CountryWithStateBase<USState> {
         ret = Holiday(name: "Groundhog Day", date: date)
         return ret
     }
-    
-    func lincolnsBirthday(in year: Int) -> Holiday? {
-        var ret: Holiday?
-        guard let date = LocalDate.init(year: year, month: 2, day: 12)
-        else { return ret }
-        ret = Holiday(name: "Abraham Lincoln's Birthday", date: date)
-        return ret
-    }
+
     
     func valentinesDay(in year: Int) -> Holiday? {
         var ret: Holiday?
