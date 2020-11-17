@@ -355,7 +355,7 @@ final class UnitedStates: CountryWithStateBase<USState> {
     }
 
     private func veteransDay(in year: Int) -> (Holiday, Bool)? {
-        let name = year >= 1954 ? "Veterans Day" : "Armistice Day"
+        let name = year >= 1954 ? "Veteran's Day" : "Armistice Day"
         if year >= 1971 && year <= 1977 {
             return (Holiday(name: name, date: Month.october.get(.fourth, .monday, in: year)), false)
         }
@@ -388,6 +388,148 @@ final class UnitedStates: CountryWithStateBase<USState> {
         }
         return nil
     }
+    
+    func groundHogDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 2, day: 2)
+        else { return ret }
+        ret = Holiday(name: "Groundhog Day", date: date)
+        return ret
+    }
+    
+    func lincolnsBirthday(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 2, day: 12)
+        else { return ret }
+        ret = Holiday(name: "Abraham Lincoln's Birthday", date: date)
+        return ret
+    }
+    
+    func valentinesDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 2, day: 14)
+        else { return ret }
+        ret = Holiday(name: "Valentine's Day", date: date)
+        return ret
+    }
+    
+    func presidentsDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        let date = Month.february.get(.third, .monday, in: year)
+        ret = Holiday(name: "President's Day", date: date)
+        return ret
+    }
+    
+    func beginDaylightSavings(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        let date = Month.march.get(.second, .sunday, in: year)
+        ret = Holiday(name: "Begin Daylight Savings", date: date)
+        return ret
+    }
+    
+    func stPatricksDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 3, day: 17)
+        else { return ret }
+        ret = Holiday(name: "St. Patrick's Day", date: date)
+        return ret
+    }
+    
+    func aprilFoolsDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 4, day: 1)
+        else { return ret }
+        ret = Holiday(name: "April Fools Day", date: date)
+        return ret
+    }
+    
+    func taxDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 4, day: 15)
+        else { return ret }
+        ret = Holiday(name: "Tax Day", date: date)
+        return ret
+    }
+    
+    func earthDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 4, day: 22)
+        else { return ret }
+        ret = Holiday(name: "Earth Day", date: date)
+        return ret
+    }
+    
+    func mothersDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 5, day: 9)
+        else { return ret }
+        ret = Holiday(name: "Mother's Day", date: date)
+        return ret
+    }
+    
+    func flagDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 6, day: 14)
+        else { return ret }
+        ret = Holiday(name: "Flag Day", date: date)
+        return ret
+    }
+    
+    func juneteenth(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 6, day: 19)
+        else { return ret }
+        ret = Holiday(name: "Juneteenth", date: date)
+        return ret
+    }
+    
+    func fathersDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 6, day: 20)
+        else { return ret }
+        ret = Holiday(name: "Father's Day", date: date)
+        return ret
+    }
+    
+    func columbusDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 10, day: 11)
+        else { return ret }
+        ret = Holiday(name: "Columbus Day", date: date)
+        return ret
+    }
+    
+    func indigenousPeopleDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 10, day: 11)
+        else { return ret }
+        ret = Holiday(name: "Indigenous Peoples' Day", date: date)
+        return ret
+    }
+    
+    func halloween(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 10, day: 31)
+        else { return ret }
+        ret = Holiday(name: "Halloween", date: date)
+        return ret
+    }
+    
+    func endDaylightSavings(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        let date = Month.november.get(.first, .sunday, in: year)
+        ret = Holiday(name: "End Daylight Savings", date: date)
+        return ret
+    }
+    
+    func electionDay(in year: Int) -> Holiday? {
+        var ret: Holiday?
+        guard let date = LocalDate.init(year: year, month: 11, day: 3)
+        else { return ret }
+        ret = Holiday(name: "Election Day", date: date)
+        return ret
+    }
+    
 }
 
 /// SwiftyHolidays: Represents a state of the United States of America.

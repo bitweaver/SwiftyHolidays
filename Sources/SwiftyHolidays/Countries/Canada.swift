@@ -67,7 +67,7 @@ final class Canada: CountryWithStateBase<CanadianProvince> {
     
     //Second Monday in October
     func getThanksGiving(year: Int) -> Holiday {
-        let date = Month.october.get(.second, .monday, in: year)
+        let date = Month.october.get(.fourth, .thursday, in: year)
         return Holiday.init(name: "Thanksgiving Day", date: date)
     }
     
