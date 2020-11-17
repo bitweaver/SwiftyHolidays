@@ -448,10 +448,9 @@ final class UnitedStates: CountryWithStateBase<USState> {
         return ret
     }
     
+    //second sunday in may
     func mothersDay(in year: Int) -> Holiday? {
-        var ret: Holiday?
-        guard let date = LocalDate.init(year: year, month: 5, day: 9)
-        else { return ret }
+        let date = Month.may.get(.second, .sunday, in: year)
         ret = Holiday(name: "Mother's Day", date: date)
         return ret
     }
@@ -472,10 +471,10 @@ final class UnitedStates: CountryWithStateBase<USState> {
         return ret
     }
     
+    //third sunday in june
     func fathersDay(in year: Int) -> Holiday? {
         var ret: Holiday?
-        guard let date = LocalDate.init(year: year, month: 6, day: 20)
-        else { return ret }
+        let date = Month.june.get(.third, .sunday, in: year)
         ret = Holiday(name: "Father's Day", date: date)
         return ret
     }
@@ -511,10 +510,10 @@ final class UnitedStates: CountryWithStateBase<USState> {
         return ret
     }
     
+    //first tuesday in november
     func electionDay(in year: Int) -> Holiday? {
         var ret: Holiday?
-        guard let date = LocalDate.init(year: year, month: 11, day: 3)
-        else { return ret }
+        let date = Month.november.get(.first, .tuesday, in: year)
         ret = Holiday(name: "Election Day", date: date)
         return ret
     }
