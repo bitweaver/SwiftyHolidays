@@ -7,7 +7,7 @@ final class Canada: CountryWithStateBase<CanadianProvince> {
         let newYearsDay = Holiday.init(name: "New Years Day", date: LocalDate.init(year: year, month: .january, day: 1)!)
         let heritageDay = getHeritageDay(year: year)
         let goodFriday = getGoodFriday(year: year)
-        let easter = LocalDate.easter(in: year)
+        let easter = Holiday.init(name: "Easter", date: LocalDate.easter(in: year))
         let easterMonday = getEasterMonday(year: year)
         let victoriaDay = getVictoriaDay(year: year)
         let memorialDay = getMemorialDay(year: year)
@@ -42,15 +42,21 @@ final class Canada: CountryWithStateBase<CanadianProvince> {
     
     //monday before may 25th, national patriots day in Quebec
     func getVictoriaDay(year: Int) -> Holiday {
-        let may25th = LocalDate.init(year: year, month: 5, day: 25)
-        let date = may25th?.previous(.monday)
-        return Holiday.init(name: "Victoria Day", date: date)
+        var ret = Holiday.init(name: "", date: (year, .january, 1))
+        guard let may25th = LocalDate.init(year: year, month: 5, day: 25)
+        else { return ret }
+        let date = may25th.previous(.monday)
+        ret = Holiday.init(name: "Victoria Day", date: date)
+        return ret
     }
     
     //memorial day and canada day are on same day
     func getMemorialDay(year: Int) -> Holiday {
-        let date = LocalDate.init(year: year, month: 7, day: 1)
-        return Holiday.init(name: "Memorial Day", date: date)
+        var ret = Holiday.init(name: "", date: (year, .january, 1))
+        guard let date = LocalDate.init(year: year, month: 7, day: 1)
+        else { return ret }
+        ret = Holiday.init(name: "Memorial Day", date: date)
+        return ret
     }
     
     //first monday in september
@@ -66,18 +72,27 @@ final class Canada: CountryWithStateBase<CanadianProvince> {
     }
     
     func getRemembranceDay(year: Int) -> Holiday {
-        let date = LocalDate.init(year: year, month: 11, day: 11)
-        return Holiday.init(name: "Remembrance Day", date: date)
+        var ret = Holiday.init(name: "", date: (year, .january, 1))
+        guard let date = LocalDate.init(year: year, month: 11, day: 11)
+        else {return ret}
+        ret = Holiday.init(name: "Remembrance Day", date: date)
+        return ret
     }
     
     func getChristmasEve(year: Int) -> Holiday {
-        let date = LocalDate.init(year: year, month: 12, day: 24)
-        return Holiday.init(name: "Christmas Eve", date: date)
+        var ret = Holiday.init(name: "", date: (year, .january, 1))
+        guard let date = LocalDate.init(year: year, month: 12, day: 24)
+        else { return ret }
+        ret = Holiday.init(name: "Christmas Eve", date: date)
+        return ret
     }
     
     func getChristmasDay(year: Int) -> Holiday {
-        let date = LocalDate.init(year: year, month: 12, day: 25)
-        return Holiday.init(name: "Christmas Day", date: date)
+        var ret = Holiday.init(name: "", date: (year, .january, 1))
+        guard let date = LocalDate.init(year: year, month: 12, day: 25)
+        else { return ret }
+        ret = Holiday.init(name: "Christmas Day", date: date)
+        return ret
     }
 }
 
